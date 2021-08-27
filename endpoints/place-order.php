@@ -24,13 +24,17 @@ if ($row != null){
         $orderId = generate_string(10); 
             $sql = $conn->prepare("INSERT INTO orders (orderId, productId, productName, customerEmail, price) VALUES (?, ?, ?, ?, ?)");
             $sql->bind_param("sssss", $orderId,$product["productId"], $product["productName"], $email, $product["price"]);
-            $result = $sql->execute();
+            $result = $sql->execute(); 
+            
+            $sql = $conn->prepare("DELETE FROM cart WHERE id = ? and productId = ?");
+            $sql->bind_param("ss", $email, $product["productId"]);
+            $result = $sql->execute(); 
             if (!$result) { 
                 $success=0;
                 break;
                 }
             } 
-        if ($success==1) echo json_encode("success"); 
+        if ($success==1) echo json_encode(array("success", $product['productId'])); 
         else 
             echo json_encode("fail"); 
 

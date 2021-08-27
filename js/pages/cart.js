@@ -102,7 +102,7 @@ function placeOrder(productDetails) {
                 console.log("Success"); 
                 window.location.href = "index.html";
             } else  {
-                console.log("failed");
+                console.log("failed", response);
             }
 
         }, 
