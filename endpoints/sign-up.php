@@ -10,12 +10,11 @@ $phone = $_POST["phone"];
 $city = $_POST["city"];
 $country = "India";
 
-$sql = "SELECT * from users where emailId = '".$username."'";
+$sql = "SELECT email from users where email= '".$username."'";
 $result = $conn->query($sql);
-$resultSet = mysqli_fetch_assoc($result);
-$emaill = $resultSet["emailId"]; 
+$row = mysqli_fetch_assoc($result);
 
-if ($emaill != ''){
+if ($row != null){
     echo json_encode("exists");
 } else {
     $authToken = generate_string(); 

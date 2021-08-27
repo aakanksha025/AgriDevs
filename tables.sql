@@ -18,6 +18,11 @@ CREATE TABLE `orders` (
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
 );  
-
+CREATE TABLE `agridevs`.`cart` (
+  `id` VARCHAR(50) NOT NULL,
+  `productId` VARCHAR(45) NOT NULL,
+  `productName` VARCHAR(45) NOT NULL,
+  `price` INT NOT NULL,
+  PRIMARY KEY (`id`));
 
 

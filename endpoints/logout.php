@@ -6,7 +6,12 @@ error_reporting(0);
 $email = $_POST["email"];
 
 $sql = $conn->prepare("UPDATE users SET sessionToken = NULL WHERE email = ?");
-$sql->bind_param("ss", $email);
+$sql->bind_param("s", $email);
 $result = $sql->execute(); 
 
-$conn->close();
+$conn->close(); 
+
+if ($result)
+    echo json_encode('success') ;
+else
+    echo json_encode('fail') ;

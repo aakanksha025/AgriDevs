@@ -21,6 +21,7 @@ function login(e) {
                document.getElementById('message-error').innerHTML = "There was a problem logging you in. Please Try again later."; 
            else {
                localStorage.authToken = response.authToken;
+               localStorage.email = email;
                window.location.href = "index.html";
            }
        }, 
@@ -59,6 +60,7 @@ function signup(e) {
                     document.getElementById('message-error').innerHTML = "There was a problem while Signing up. Please Try again later."; 
                 else {
                     localStorage.authToken = response.authToken;
+                    localStorage.email = email;
                     window.location.href = "index.html";
                 }
             }, 

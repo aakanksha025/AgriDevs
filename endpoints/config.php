@@ -15,9 +15,8 @@ if ($conn->connect_error) {
 } 
 
 
-function generate_string() {
+function generate_string($strength = 20) {
     $input = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $strength = 20;
     $input_length = strlen($input);
     $random_string = '';
     for($i = 0; $i < $strength; $i++) {
