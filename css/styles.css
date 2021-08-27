@@ -261,6 +261,11 @@ button {
     padding-left: 1.6rem;
 }
 
+.logo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
 	
 .last{ padding-left: 30px !important; }
 .banner_text{
