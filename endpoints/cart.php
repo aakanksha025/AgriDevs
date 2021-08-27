@@ -17,15 +17,21 @@ if ($row != null) {
 
     // Add a product to cart
     if ($action == 'add') {
-        $product = json_decode($_POST["productDetails"]); 
-        $sql = $conn->prepare("INSERT INTO cart (id, productId, productName, price) VALUES (?, ?, ?, ?)");
-        $sql->bind_param("ssss", $email, $product->$productId, $product->$productName, $product->$price);
-        $result = $sql->execute();
-        if (!$result) { 
-            echo json_encode("fail");
-        } else {
-            echo json_encode("success");
-        }        
+        $productId = $_POST["productId"]; 
+        $productName = $_POST["productName"]; 
+        $productPrice = $_POST["price"];  
+        if ($productId && $productName && $productPrice) {
+            $sql = $conn->prepare("INSERT INTO cart (id, productId, productName, price) VALUES (?, ?, ?, ?)");
+            $sql->bind_param("ssss", $email, $productId, $productName, $productPrice);
+            if ($sql->execute()) { 
+                echo json_encode("success"); 
+            } else {
+                echo json_encode("fail");
+            }   
+        } else { 
+            echo json_encode(array("data-missing", $productId, $productName, $productPrice)); 
+        }
+             
     } 
     
     // get all products of a cart
@@ -34,10 +40,11 @@ if ($row != null) {
         $sql = "SELECT * from cart where id = '".$email."'";
         $result = $conn->query($sql); 
         while($row = mysqli_fetch_assoc($result)) {
-            $resultArray[$i] = $result;
+            $resultArray[$i] = $row;
             $i++;
-        } 
-        echo json_encode($resultArray);
+        }  
+        if ($resultArray == null ) echo json_encode("no-products");
+        else echo json_encode($resultArray);
     } 
     
     // Delete an item from the cart

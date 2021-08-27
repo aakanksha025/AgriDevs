@@ -178,5 +178,12 @@
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="js\pages\auth-status.js"></script>
 
-   </body>
+   </body> 
+
+   <script>
+	   $(document).ready(()=> {
+		   if(localStorage.authToken == null) 
+		   window.location.href = login.html;
+	   })
+   </script>
 </html>
