@@ -9,12 +9,16 @@ $email = $_POST["email"];
 $authToken =$_POST["authToken"]; 
 $productDetails = json_decode($_POST["productDetails"]); 
 
-
+// If Authenticated
 $sql = "SELECT * from users where email = '".$email."' and sessionToken = '".$authToken."'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
+
+
 if ($row != null){  
     $success = 1;
+
+    // Place order for each products
     foreach ($productDetails as $product) { 
         $orderId = generate_string(10); 
         $sql = $conn->prepare("INSERT INTO orders (orderId, productId, productName, customerEmail, price) VALUES (?, ?, ?, ?, ?)");

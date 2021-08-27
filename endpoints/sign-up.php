@@ -3,6 +3,7 @@
 require_once 'config.php';
 error_reporting(0);
 
+// Get all values from the request
 $fullName = $_POST["fullName"];
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -14,7 +15,8 @@ $sql = "SELECT email from users where email= '".$username."'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
 
-if ($row != null){
+// If user account already exists in DB
+if ($row != null) {
     echo json_encode("exists");
 } else {
     $authToken = generate_string(); 
