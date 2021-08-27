@@ -21,8 +21,14 @@ function login(e) {
                document.getElementById('message-error').innerHTML = "There was a problem logging you in. Please Try again later."; 
            else {
                localStorage.authToken = response.authToken;
-               localStorage.email = email;
-               window.location.href = "index.html";
+               localStorage.email = email; 
+               var url = new URL(window.location.href);
+               var redirectPage = url.searchParams.get("redirect");
+               if (redirectPage)
+                    window.location.href = redirectPage; 
+                else
+                    window.location.href = "index.html"; 
+
            }
        }, 
        error: function (error) {}
