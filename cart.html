@@ -48,13 +48,17 @@
                         </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                           <a class="nav-item nav-link" href="index.html">Home</a>
-                           <a class="nav-item nav-link" href="All products.html">All Products</a>
+                            <a class="nav-item nav-link" href="index.html">Home</a>
+                           <a class="nav-item nav-link" href="all-products.html">All Products</a>
                            <a class="nav-item nav-link" href="Rice.html">Rice</a>
-                           <a class="nav-item nav-link" href="explore.html">Wheat</a>
+                           <a class="nav-item nav-link" href="wheat.html">Wheat</a>
                            <a class="nav-item nav-link" href="contact.html">Contact</a>
                            <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
-                           <a class="nav-item nav-link last" href="cart.html"><img src="images/shop_icon.png"></a>
+                           <a class="nav-item nav-link last" href="cart.html"><img src="images/shop_icon.png"></a> 
+                           <a class="nav-item nav-link d-none login" href="login.html">Login</a>
+                           <a class="nav-item nav-link d-none login" href="signup.html">Sign Up</a>
+                           <a class="nav-item nav-link d-none" id="logoutLink"  onclick="logout();">Logout</a>
+ 
                         </div>
                     </div>
                     </nav>
@@ -63,7 +67,7 @@
 		</div>
 	</div>
    	<!-- contact section start -->
-    <div class="allproduct_text">Your Cart</div>
+    <div class="allproduct_text text-center h3 mt-5">Your Cart</div>
     <div class="layout_padding contact_section">
     	<div class="container-fluid ram">
     		<div class="row">
@@ -72,9 +76,9 @@
                     <div class="input_main">
                        <div class="container" id="products-holder">
                        </div> 
-                       <div id="no-products" class="d-none"> You Have no products to display.</div>
+                       <div id="no-products" class="d-none no-products text-center"> You have no products to display.</div>
                        <div class="send_btn">
-                        <button class="main_bt">Place Order</button>
+                          <button class="main_bt" id="placeOrderBtn">Place Order</button>
                        </div>                   
                     </div>
     		        </div>
@@ -168,41 +172,11 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script> 
-      <script src="js\pages\cart.js"></script>
+      <script src="js/pages/cart.js"></script>
       <!-- javascript --> 
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         
-$('#myCarousel').carousel({
-            interval: false
-        });
+      <script src="js\pages\auth-status.js"></script>
 
-        //scroll slides on swipe for touch enabled devices
-
-        $("#myCarousel").on("touchstart", function(event){
-
-            var yClick = event.originalEvent.touches[0].pageY;
-            $(this).one("touchmove", function(event){
-
-                var yMove = event.originalEvent.touches[0].pageY;
-                if( Math.floor(yClick - yMove) > 1 ){
-                    $(".carousel").carousel('next');
-                }
-                else if( Math.floor(yClick - yMove) < -1 ){
-                    $(".carousel").carousel('prev');
-                }
-            });
-            $(".carousel").on("touchend", function(){
-                $(this).off("touchmove");
-            });
-        }); });
-      </script> 
    </body>
 </html>

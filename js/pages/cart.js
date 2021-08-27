@@ -3,13 +3,27 @@ $(document).ready(() => {
     if (window.cartItems && window.cartItems.length != 0) { 
         var holder = document.getElementById('products-holder'); 
 
-        for (var item in window.cartItems) { 
-            const productId = item.productId;
-            holder.appendChild(createItem(item.productName, item.price));
+        for (var i in window.cartItems) { 
+            const productId = window.cartItems[i].productId;
+            holder.appendChild(createItem(window.cartItems[i].productName, window.cartItems[i].price));
         } 
 
-    } else 
+    } else  {
         document.getElementById('no-products').classList.remove('d-none');
+        document.getElementById('placeOrderBtn').classList.add('d-none');
+    } 
+    document.getElementById('placeOrderBtn').addEventListener('click', () => {
+        let items = []; 
+        for ( var i in window.cartItems) {
+            var obj = { 
+                productId: window.cartItems[i].productId,
+                productName: window.cartItems[i].productName,
+                price: window.cartItems[i].price
+            }; 
+            items.push(obj);
+        } 
+        placeOrder(items);
+    })
 
 })  
 
@@ -104,7 +118,7 @@ function addToCart(productDetails) {
     });
 } 
 
-function getCartItems() {
+function getCartItems() { 
     $.ajax({
         type: "POST",
         url: "endpoints/cart.php",
@@ -115,6 +129,7 @@ function getCartItems() {
             action: "get"
         },
         success: function (response) { 
+            console.log(response);
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();

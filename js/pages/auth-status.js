@@ -1,3 +1,5 @@
+
+
 function logout() { 
    // call AJAX
    $.ajax({
@@ -5,7 +7,7 @@ function logout() {
        url: "endpoints/logout.php",
        datatype: "html",
        data: {
-           email: email, 
+           email: localStorage.email, 
        },
        success: function (response) { 
            response = JSON.parse(response); 
@@ -21,7 +23,8 @@ function logout() {
    })
 }  
 
-function checkAuthStatus() { 
+$(document).ready(() => {  
+
     var email = localStorage.getItem('email')
     var authToken =  localStorage.getItem('authToken')
     if (email !== null && authToken !== null)  {
@@ -34,17 +37,18 @@ function checkAuthStatus() {
                 email: email, 
                 authToken: authToken, 
             },
-            success: function (response) { 
+            success: function (response) {  
+                console.log(response)
                 response = JSON.parse(response); 
                 if (response == "success") { 
-                    return true;
+                    $('#logoutLink').removeClass('d-none');
                 } else {
-                    return false;
+                    $('.login').removeClass('d-none');
                 }
             }, 
             error: function (error) {}
         })
     } else 
-        return false;
+        $('.login').removeClass('d-none');
 
-}
+});
