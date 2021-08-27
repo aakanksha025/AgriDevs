@@ -21,7 +21,7 @@ function placeOrder(productDetails) {
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();
-                window.location.href = "login.php?redirect="+pagename;
+                window.location.href = "login.html?redirect="+pagename;
             }
             else if (response == "success")  {
                 console.log("Success"); 
@@ -60,7 +60,7 @@ function addToCart(productDetails) {
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();
-                window.location.href = "login.php?redirect="+pagename;
+                window.location.href = "login.html?redirect="+pagename;
             }
             else if (response == "success")  {
                 console.log("Success"); 
@@ -88,7 +88,7 @@ function getCartItems() {
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();
-                window.location.href = "login.php?redirect="+pagename;
+                window.location.href = "login.html?redirect="+pagename;
             }
             else 
                 return response;
@@ -113,7 +113,7 @@ function deleteItemFromCart(productId) {
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();
-                window.location.href = "login.php?redirect="+pagename;
+                window.location.href = "login.html?redirect="+pagename;
             }
             else if (response == "success")  {
                 console.log("Success"); 
