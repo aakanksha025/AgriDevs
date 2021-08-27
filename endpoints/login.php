@@ -17,7 +17,7 @@ if ($email == ''){
     if ($resultSet["password"] == md5($password)) {
         $auth = generate_string();
         $sql = $conn->prepare("UPDATE users set sessionToken = ? where emailId = ?");
-        $sql->bind_param("ss", $auth, $username);
+        $sql->bind_param("ss", $auth, $email);
         $sql->execute();
         $output = array("authToken" => $auth);
         echo json_encode($output);

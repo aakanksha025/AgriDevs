@@ -4,6 +4,7 @@ function login(e) {
    var email = document.getElementById('email').value;
    var password = document.getElementById('password').value;  
    
+   // call AJAX
    $.ajax({
        type: "POST",
        url: "endpoints/login.php",
@@ -25,4 +26,45 @@ function login(e) {
        }, 
        error: function (error) {}
    })
+} 
+
+function signup(e) {
+    e.preventDefault();
+    document.getElementById('message-error').innerHTML = "";
+
+   var email = document.getElementById('email').value;
+   var fullName = document.getElementById('fullname').value;
+   var phone = document.getElementById('phone').value;
+   var city = document.getElementById('state').value;
+   var password = document.getElementById('password').value;  
+   var confirmpassword = document.getElementById('confirmpassword').value;   
+
+   if (password == confirmpassword) {
+        $.ajax({
+            type: "POST",
+            url: "endpoints/sign-up.php",
+            datatype: "html",
+            data: {
+                email: email, 
+                password: password, 
+                fullName: fullName,
+                city: city,
+                phone: phone, 
+            },
+            success: function (response) { 
+                response = JSON.parse(response); 
+                if (response == "exists") 
+                    document.getElementById('message-error').innerHTML = "The Account with this email already exists.";
+                else if (response == "fail") 
+                    document.getElementById('message-error').innerHTML = "There was a problem while Signing up. Please Try again later."; 
+                else {
+                    localStorage.authToken = response.authToken;
+                    window.location.href = "index.html";
+                }
+            }, 
+            error: function (error) {}
+        })
+    } else {
+        document.getElementById('message-error').innerHTML = "Password mismatch";
+    }
 }

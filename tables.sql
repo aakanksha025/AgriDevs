@@ -17,6 +17,7 @@ CREATE TABLE `orders` (
   `customerEmail` varchar(45) NOT NULL,
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
-); 
+);  
+
 
 

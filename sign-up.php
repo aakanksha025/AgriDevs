@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Login</title>
+      <title>Sign Up</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -65,23 +65,63 @@
 		</div>
 	</div>
 	<!-- new collection section start -->
-  <div class="collection_text">Login</div>
+  <div class="collection_text">Sign Up</div>
    <div class="about_main layout_padding">
         <div class="collectipn_section_3 layout_padding">
             <div class="container bg-light rounded w-50">
                 <div class="racing_shoes d-flex justify-content-center">
-                    <form id='login' action="post">  
-                        <div class="d-flex justify-content-center flex-column">
-                            <div class="input-group"> 
-                                <label for="email"> Email Id </label>  <br />
-                                <input type="email" name="email" placeholder="example@mail.com" id="email" required> 
+                    <form id='signup' action="post">  
+                        <div class="d-flex justify-content-center flex-column"> 
+                            <div class="row"> 
+                                <div class="input-group"> 
+                                    <label for="name"> Full Name</label>  <br />
+                                    <input type="text" name="fullname" class="form-control" placeholder="Your name" id="fullname" required>
+                                </div> 
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group"> 
+                                        <label for="name"> Phone Number </label>  <br />
+                                        <input type="tel" name="phone" class="form-control" placeholder="9876543210" id="phone" required>
+                                    </div> 
+                                </div> 
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group"> 
+                                        <label for="email"> Email Id </label>  <br />
+                                        <input type="text" name="email" class="form-control" placeholder="example@mail.com" id="email" required>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group"> 
+                                        <label for="name"> State</label>  <br /> 
+                                        <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" required></select>
+
+                                    </div> 
+                                </div> 
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group"> 
+                                        <label for="email"> City </label>  <br />
+                                        <select id ="state" required></select>
+                                    </div> 
+                                </div>
                             </div> 
-                            <div class="input-group">
-                                <label for="password"> Password </label> <br />
-                                <input type="password" name="password" class="input-group" placeholder="*************" id="password" required>
-                            </div> 
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <label for="password"> Password </label> <br />
+                                        <input type="password" name="password" class="input-group" placeholder="*************" id="password" required>
+                                    </div> 
+                                </div> 
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <label for="password"> Confirm your Password </label> <br />
+                                        <input type="password" name="confirmpassword" class="input-group" placeholder="*************" id="confirmpassword" required>
+                                    </div> 
+                                </div>
+                            </div>
+                            
                             <small class="text-danger" id="message-error"></small>
-                            <input type="submit" name="submit" value="Log In" class="btn btn-primary">
+                            <input type="submit" name="submit" value="Sign Up" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
@@ -178,17 +218,26 @@
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> 
 
-
+      
       <script src="js\pages\login.js"></script>
+      <script src="js\pages\cities.js"></script>
       <script>
          $(document).ready(function(){
             $(".fancybox").fancybox({
                 openEffect: "none",
                 closeEffect: "none"
-            }); 
-            document.getElementById('login').addEventListener('submit', login);
+            });   
+            print_state("sts");
+
+            document.getElementById('signup').addEventListener('submit', signup);
          }); 
 
-      </script> 
+      </script>  
+      <style>
+          .nice-select {
+              display: none;
+          }
+      </style>
    </body>
-</html>
+</html> 
+
