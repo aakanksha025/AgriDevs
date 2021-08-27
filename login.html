@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Shoes</title>
+      <title>Login</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -49,9 +51,9 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                            <a class="nav-item nav-link" href="index.html">Home</a>
-                           <a class="nav-item nav-link" href="All products.html">All Products</a>
-                           <a class="nav-item nav-link" href="Rice.html">Rice</a>
-                           <a class="nav-item nav-link" href="explore.html">Wheat</a>
+                           <a class="nav-item nav-link" href="collection.html">Collection</a>
+                           <a class="nav-item nav-link" href="shoes.html">Shoes</a>
+                           <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
                            <a class="nav-item nav-link" href="contact.html">Contact</a>
                            <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
                            <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
@@ -62,51 +64,31 @@
 			</div>
 		</div>
 	</div>
-   	<!-- contact section start -->
-    <div class="allproduct_text">Contact Us</div>
-    <div class="layout_padding contact_section">
-    	<div class="container">
-    		<h1 class="new_text"><strong>Contact Now</strong></h1>
-    	</div>
-    	<div class="container-fluid ram">
-    		<div class="row">
-    			<div class="col-md-6">
-    				<div class="email_box">
-                    <div class="input_main">
-                       <div class="container">
-                          <form action="/action_page.php">
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Name" name="Name">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Phone Numbar" name="Name">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Email" name="Email">
-                            </div>
-                            
-                            <div class="form-group">
-                                <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                            </div>
-                          </form>   
-                       </div> 
-                       <div class="send_btn">
-                        <button class="main_bt">Send</button>
-                       </div>                   
-                    </div>
-    		</div>
-    			</div>
-    			<div class="col-md-6">
-    				<div class="shop_banner">
-    					<div class="our_shop">
-    						<button class="out_shop_bt">Our Shop</button>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+	<!-- new collection section start -->
+  <div class="collection_text">Login</div>
+   <div class="about_main layout_padding">
+        <div class="collectipn_section_3 layout_padding">
+            <div class="container bg-light rounded w-50">
+                <div class="racing_shoes d-flex justify-content-center">
+                    <form id='login' action="post">  
+                        <div class="d-flex justify-content-center flex-column">
+                            <div class="input-group"> 
+                                <label for="email"> Email Id </label>  <br />
+                                <input type="email" name="email" placeholder="example@mail.com" id="email" required> 
+                            </div> 
+                            <div class="input-group">
+                                <label for="password"> Password </label> <br />
+                                <input type="password" name="password" class="input-group" placeholder="*************" id="password" required>
+                            </div> 
+                            <small class="text-danger" id="message-error"></small>
+                            <input type="submit" name="submit" value="Log In" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-   	<!-- contact section end -->
+	<!-- new collection section end -->
 	<!-- section footer start -->
     <div class="section_footer">
     	<div class="container">
@@ -194,38 +176,19 @@
       <script src="js/custom.js"></script>
       <!-- javascript --> 
       <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> 
+
+
+      <script src="js\pages\login.js"></script>
       <script>
          $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         
-$('#myCarousel').carousel({
-            interval: false
-        });
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            }); 
+            document.getElementById('login').addEventListener('submit', login);
+         }); 
 
-        //scroll slides on swipe for touch enabled devices
-
-        $("#myCarousel").on("touchstart", function(event){
-
-            var yClick = event.originalEvent.touches[0].pageY;
-            $(this).one("touchmove", function(event){
-
-                var yMove = event.originalEvent.touches[0].pageY;
-                if( Math.floor(yClick - yMove) > 1 ){
-                    $(".carousel").carousel('next');
-                }
-                else if( Math.floor(yClick - yMove) < -1 ){
-                    $(".carousel").carousel('prev');
-                }
-            });
-            $(".carousel").on("touchend", function(){
-                $(this).off("touchmove");
-            });
-        });
       </script> 
    </body>
 </html>

@@ -12,11 +12,17 @@ CREATE TABLE `agridevs`.`users` (
   PRIMARY KEY (`email`)); 
 
 CREATE TABLE `orders` (
-  `orderId` varchar(45) NOT NULL,
+  `orderId` varchar(45) NOT NULL, `productId` VARCHAR(45),
   `productName` varchar(50) NOT NULL,
   `customerEmail` varchar(45) NOT NULL,
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
-); 
+);  
+CREATE TABLE `agridevs`.`cart` (
+  `id` VARCHAR(50) NOT NULL,
+  `productId` VARCHAR(45) NOT NULL,
+  `productName` VARCHAR(45) NOT NULL,
+  `price` INT NOT NULL,
+  PRIMARY KEY (`id`));
 
 
