@@ -147,6 +147,10 @@ a,
      transition: all .3s ease-in-out;
 }
 
+.navbar-nav a{
+    font-size: 12px;
+}
+
 .logo img{
     width: 100px;
     height: 100px;
