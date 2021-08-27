@@ -86,8 +86,8 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name 1">Short grain Rice</h3>
-                    <h4 class="product-price 1">₹ 60</h4>
+					<h3 class="product-name product1">Short grain Rice</h3>
+                    <h4 class="product-price product1">₹ 60</h4>
 					<div class="star_new">
     						<div class="left_part">
     							<ul>
@@ -118,9 +118,9 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name 2">Basmathi Rice</h3>
+					<h3 class="product-name product2">Basmathi Rice</h3>
 
-					<h4 class="product-price 2">₹ 400</h4>
+					<h4 class="product-price product2">₹ 400</h4>
 					<div >
 					<div class="star_new">
     						<div class="left_part">
@@ -154,9 +154,9 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name 3">Brown rice</h3>
+					<h3 class="product-name product3">Brown rice</h3>
 
-					<h4 class="product-price 3">₹ 100</h4>
+					<h4 class="product-price product3">₹ 100</h4>
 					<div class="star_new">
     						<div class="left_part">
     							<ul>
@@ -283,19 +283,20 @@
    <script>
 	   $(document).ready(() => {
 		   document.querySelectorAll('.addToCart').forEach(item => {
-			   item.addEventListener('click', () => {
-				   var productId = this.id; 
+			   item.addEventListener('click', (e) => { 
+				   var productId = item.id; 
 				   var productName = ""; 
 				   var price = "";
-				   document.querySelectorAll('.'+productId).forEach(ele => {
-					   productName = ele.innerHTML.trim();
-					   price = ele.innerHTML.replace('₹','').trim();
-				   }) 
+				   var ele = document.querySelectorAll('.product'+productId);
+					   productName = ele[0].innerHTML.trim();
+					   price = ele[1].innerHTML.replace('₹','').trim();
+				   
 				   var productDetails = {
          				productId: productId,
             			productName: productName,
              			price: price
-				   };
+				   }; 
+				   console.log(productDetails);
 				   addToCart(productDetails);
 			   })
 		   })

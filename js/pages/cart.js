@@ -1,18 +1,44 @@
-$(document).ready(() => {
-    window.cartItems = getCartItems();
-    if (window.cartItems && window.cartItems.length != 0) { 
-        var holder = document.getElementById('products-holder'); 
+$(document).ready(() => { 
+    $.ajax({
+        type: "POST",
+        url: "endpoints/cart.php",
+        datatype: "html",
+        data: {
+            email: localStorage.email, 
+            authToken: localStorage.authToken, 
+            action: "get"
+        },
+        success: function (response) { 
+            console.log(response);
+            response = JSON.parse(response); 
+            if (response == "unauthenticated")  {
+                var pagename = window.location.pathname.split("/").pop();
+                window.location.href = "login.html?redirect="+pagename;
+            } else if (response == 'no-products') {
+                document.getElementById('no-products').classList.remove('d-none');
+                document.getElementById('placeOrderBtn').classList.add('d-none');
+            }
+            else {
+                    window.cartItems = response;
+                    if (window.cartItems && window.cartItems.length != 0) { 
+                        var holder = document.getElementById('products-holder'); 
+                
+                        for (var i in window.cartItems) { 
+                            const productId = window.cartItems[i].productId;
+                            holder.appendChild(createItem(productId, window.cartItems[i].productName, window.cartItems[i].price));
+                        } 
+                
+                    } else  {
+                        document.getElementById('no-products').classList.remove('d-none');
+                        document.getElementById('placeOrderBtn').classList.add('d-none');
+                    } 
+                }
 
-        for (var i in window.cartItems) { 
-            const productId = window.cartItems[i].productId;
-            holder.appendChild(createItem(window.cartItems[i].productName, window.cartItems[i].price));
-        } 
+        }, 
+        error: function (error) {} 
+    });
 
-    } else  {
-        document.getElementById('no-products').classList.remove('d-none');
-        document.getElementById('placeOrderBtn').classList.add('d-none');
-    } 
-    document.getElementById('placeOrderBtn').addEventListener('click', () => {
+    document.getElementById('placeOrderBtn').addEventListener('click', () => { 
         let items = []; 
         for ( var i in window.cartItems) {
             var obj = { 
@@ -21,22 +47,27 @@ $(document).ready(() => {
                 price: window.cartItems[i].price
             }; 
             items.push(obj);
-        } 
+        }  
         placeOrder(items);
     })
 
 })  
 
-function createItem (productName, price) {
+function createItem (pid, productName, priceRs) {
     var row = document.createElement('div');
-    row.classList.add('row', 'px-2'); 
+    row.classList.add('row', 'p-2', 'text-light', 'd-flex', 'justify-content-center'); 
     var name = document.createElement('p');
     name.innerHTML = productName;
     var price = document.createElement('p');
-    price.innerHTML = "Rs. "+price; 
+    price.innerHTML = "Rs. "+priceRs; 
+    var deleteBtn = document.createElement('button'); 
+    deleteBtn.innerHTML = "Delete Item";
+    deleteBtn.classList.add('btn', 'btn-danger'); 
+    deleteBtn.setAttribute('onclick', "deleteItemFromCart('"+pid+"')")
 
     row.appendChild(name)
     row.appendChild(price)
+    row.appendChild(deleteBtn)
     return row;
 
 }
@@ -59,7 +90,7 @@ function placeOrder(productDetails) {
         data: {
             email: localStorage.email, 
             authToken: localStorage.authToken, 
-            productDetails: JSON.stringify(productDetails),
+            productDetails: productDetails,
         },
         success: function (response) { 
             response = JSON.parse(response); 
@@ -69,10 +100,9 @@ function placeOrder(productDetails) {
             }
             else if (response == "success")  {
                 console.log("Success"); 
-                return true;
+                window.location.href = "index.html";
             } else  {
                 console.log("failed");
-                return false;
             }
 
         }, 
@@ -97,10 +127,13 @@ function addToCart(productDetails) {
         data: {
             email: localStorage.email, 
             authToken: localStorage.authToken, 
-            productDetails: JSON.stringify(productDetails), 
+            productId: productDetails.productId, 
+            productName: productDetails.productName, 
+            price: productDetails.price, 
             action: "add"
         },
         success: function (response) { 
+            console.log(response)
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();
@@ -117,30 +150,6 @@ function addToCart(productDetails) {
     });
 } 
 
-function getCartItems() { 
-    $.ajax({
-        type: "POST",
-        url: "endpoints/cart.php",
-        datatype: "html",
-        data: {
-            email: localStorage.email, 
-            authToken: localStorage.authToken, 
-            action: "get"
-        },
-        success: function (response) { 
-            console.log(response);
-            response = JSON.parse(response); 
-            if (response == "unauthenticated")  {
-                var pagename = window.location.pathname.split("/").pop();
-                window.location.href = "login.html?redirect="+pagename;
-            }
-            else 
-                return response;
-
-        }, 
-        error: function (error) {} 
-    });
-} 
 
 function deleteItemFromCart(productId) {
     $.ajax({
@@ -161,10 +170,11 @@ function deleteItemFromCart(productId) {
             }
             else if (response == "success")  {
                 console.log("Success"); 
-                return true;
+                window.location.href = "cart.html";
             } else  {
                 console.log("failed");
-                return false;
+                window.location.href = "cart.html";
+
             }
         }, 
         error: function (error) {} 
