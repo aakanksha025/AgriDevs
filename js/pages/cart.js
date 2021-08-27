@@ -1,3 +1,33 @@
+$(document).ready(() => {
+    window.cartItems = getCartItems();
+    if (window.cartItems && window.cartItems.length != 0) { 
+        var holder = document.getElementById('products-holder'); 
+
+        for (var item in window.cartItems) { 
+            const productId = item.productId;
+            holder.appendChild(createItem(item.productName, item.price));
+        } 
+
+    } else 
+        document.getElementById('no-products').classList.remove('d-none');
+
+})  
+
+function createItem (productName, price) {
+    var row = document.createElement('div');
+    row.classList.add('row', 'px-2'); 
+    var name = document.createElement('p');
+    name.innerHTML = productName;
+    var price = document.createElement('p');
+    price.innerHTML = "Rs. "+price; 
+
+    row.appendChild(name)
+    row.appendChild(price)
+    return row;
+
+}
+
+
 function placeOrder(productDetails) {
     // productDetails [JSON ARRAY] 
     //  STRUCTURE [
