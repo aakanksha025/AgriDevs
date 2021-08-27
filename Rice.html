@@ -48,13 +48,16 @@
                         </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                           <a class="nav-item nav-link" href="index.html">Home</a>
-                           <a class="nav-item nav-link" href="All products.html">All Products</a>
+							<a class="nav-item nav-link" href="index.html">Home</a>
+                           <a class="nav-item nav-link" href="all-products.html">All Products</a>
                            <a class="nav-item nav-link" href="Rice.html">Rice</a>
                            <a class="nav-item nav-link" href="wheat.html">Wheat</a>
                            <a class="nav-item nav-link" href="contact.html">Contact</a>
                            <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
-                           <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
+                           <a class="nav-item nav-link last" href="cart.html"><img src="images/shop_icon.png"></a> 
+                           <a class="nav-item nav-link d-none login" href="login.html">Login</a>
+                           <a class="nav-item nav-link d-none login" href="signup.html">Sign Up</a>
+                           <a class="nav-item nav-link d-none" id="logoutLink"  onclick="logout();">Logout</a>
                         </div>
                     </div>
                     </nav>
@@ -288,39 +291,9 @@
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
+      <script src="js/owl.carousel.js"></script> 
+      <script src="js\pages\auth-status.js"></script>
+
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         
-$('#myCarousel').carousel({
-            interval: false
-        });
-
-        //scroll slides on swipe for touch enabled devices
-
-        $("#myCarousel").on("touchstart", function(event){
-
-            var yClick = event.originalEvent.touches[0].pageY;
-            $(this).one("touchmove", function(event){
-
-                var yMove = event.originalEvent.touches[0].pageY;
-                if( Math.floor(yClick - yMove) > 1 ){
-                    $(".carousel").carousel('next');
-                }
-                else if( Math.floor(yClick - yMove) < -1 ){
-                    $(".carousel").carousel('prev');
-                }
-            });
-            $(".carousel").on("touchend", function(){
-                $(this).off("touchmove");
-            });
-        });
-      </script> 
    </body>
 </html>

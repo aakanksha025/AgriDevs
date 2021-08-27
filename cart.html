@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Racing Boot</title>
+      <title>Cart</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -48,13 +48,17 @@
                         </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                           <a class="nav-item nav-link" href="index.html">Home</a>
-                           <a class="nav-item nav-link" href="collection.html">Collection</a>
-                           <a class="nav-item nav-link" href="shoes.html">Shoes</a>
-                           <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
+                            <a class="nav-item nav-link" href="index.html">Home</a>
+                           <a class="nav-item nav-link" href="all-products.html">All Products</a>
+                           <a class="nav-item nav-link" href="Rice.html">Rice</a>
+                           <a class="nav-item nav-link" href="wheat.html">Wheat</a>
                            <a class="nav-item nav-link" href="contact.html">Contact</a>
                            <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
-                           <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
+                           <a class="nav-item nav-link last" href="cart.html"><img src="images/shop_icon.png"></a> 
+                           <a class="nav-item nav-link d-none login" href="login.html">Login</a>
+                           <a class="nav-item nav-link d-none login" href="signup.html">Sign Up</a>
+                           <a class="nav-item nav-link d-none" id="logoutLink"  onclick="logout();">Logout</a>
+ 
                         </div>
                     </div>
                     </nav>
@@ -62,33 +66,27 @@
 			</div>
 		</div>
 	</div>
-	<!-- new collection section start -->
-  <div class="collection_text">Racing Boots</div>
-   <div class="about_main layout_padding">
-    <div class="collection_section">
-    	<div class="container">
-    		<h1 class="new_text"><strong>Racing Boots</strong></h1>
-    	    <p class="consectetur_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-    	</div>
-    </div>
-    <div class="collectipn_section_3 layout_padding">
-    	<div class="container">
-    		<div class="racing_shoes">
-    			<div class="row">
-    				<div class="col-md-8">
-    					<div class="shoes-img3"><img src="images/shoes-img3.png"></div>
-    				</div>
-    				<div class="col-md-4">
-    					<div class="sale_text"><strong>Sale <br><span style="color: #0a0506;">JOGING</span> <br>SHOES</strong></div>
-    					<div class="number_text"><strong>$ <span style="color: #0a0506">100</span></strong></div>
-    					<button class="seemore">See More</button>
-    				</div>
+   	<!-- contact section start -->
+    <div class="allproduct_text text-center h3 mt-5">Your Cart</div>
+    <div class="layout_padding contact_section">
+    	<div class="container-fluid ram">
+    		<div class="row">
+    			<div class="col-md-8">
+    				<div class="email_box">
+                    <div class="input_main">
+                       <div class="container" id="products-holder">
+                       </div> 
+                       <div id="no-products" class="d-none no-products text-center"> You have no products to display.</div>
+                       <div class="send_btn">
+                          <button class="main_bt" id="placeOrderBtn">Place Order</button>
+                       </div>                   
+                    </div>
+    		        </div>
     			</div>
     		</div>
     	</div>
     </div>
-    </div>
-	<!-- new collection section end -->
+   	<!-- contact section end -->
 	<!-- section footer start -->
     <div class="section_footer">
     	<div class="container">
@@ -173,41 +171,12 @@
       <script src="js/plugin.js"></script>
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="js/custom.js"></script> 
+      <script src="js/pages/cart.js"></script>
       <!-- javascript --> 
       <script src="js/owl.carousel.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-         
-         
-$('#myCarousel').carousel({
-            interval: false
-        });
+      <script src="js\pages\auth-status.js"></script>
 
-        //scroll slides on swipe for touch enabled devices
-
-        $("#myCarousel").on("touchstart", function(event){
-
-            var yClick = event.originalEvent.touches[0].pageY;
-            $(this).one("touchmove", function(event){
-
-                var yMove = event.originalEvent.touches[0].pageY;
-                if( Math.floor(yClick - yMove) > 1 ){
-                    $(".carousel").carousel('next');
-                }
-                else if( Math.floor(yClick - yMove) < -1 ){
-                    $(".carousel").carousel('prev');
-                }
-            });
-            $(".carousel").on("touchend", function(){
-                $(this).off("touchmove");
-            });
-        });
-      </script> 
    </body>
 </html>

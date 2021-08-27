@@ -1,3 +1,47 @@
+$(document).ready(() => {
+    window.cartItems = getCartItems();
+    if (window.cartItems && window.cartItems.length != 0) { 
+        var holder = document.getElementById('products-holder'); 
+
+        for (var i in window.cartItems) { 
+            const productId = window.cartItems[i].productId;
+            holder.appendChild(createItem(window.cartItems[i].productName, window.cartItems[i].price));
+        } 
+
+    } else  {
+        document.getElementById('no-products').classList.remove('d-none');
+        document.getElementById('placeOrderBtn').classList.add('d-none');
+    } 
+    document.getElementById('placeOrderBtn').addEventListener('click', () => {
+        let items = []; 
+        for ( var i in window.cartItems) {
+            var obj = { 
+                productId: window.cartItems[i].productId,
+                productName: window.cartItems[i].productName,
+                price: window.cartItems[i].price
+            }; 
+            items.push(obj);
+        } 
+        placeOrder(items);
+    })
+
+})  
+
+function createItem (productName, price) {
+    var row = document.createElement('div');
+    row.classList.add('row', 'px-2'); 
+    var name = document.createElement('p');
+    name.innerHTML = productName;
+    var price = document.createElement('p');
+    price.innerHTML = "Rs. "+price; 
+
+    row.appendChild(name)
+    row.appendChild(price)
+    return row;
+
+}
+
+
 function placeOrder(productDetails) {
     // productDetails [JSON ARRAY] 
     //  STRUCTURE [
@@ -64,17 +108,16 @@ function addToCart(productDetails) {
             }
             else if (response == "success")  {
                 console.log("Success"); 
-                return true;
+                window.location.href = "cart.html";
             } else  {
                 console.log("failed");
-                return false;
             }
         }, 
         error: function (error) {} 
     });
 } 
 
-function getCartItems() {
+function getCartItems() { 
     $.ajax({
         type: "POST",
         url: "endpoints/cart.php",
@@ -85,6 +128,7 @@ function getCartItems() {
             action: "get"
         },
         success: function (response) { 
+            console.log(response);
             response = JSON.parse(response); 
             if (response == "unauthenticated")  {
                 var pagename = window.location.pathname.split("/").pop();

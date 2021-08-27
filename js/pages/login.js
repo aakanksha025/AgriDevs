@@ -14,12 +14,15 @@ function login(e) {
            password: password,
        },
        success: function (response) { 
-           response = JSON.parse(response); 
+           console.log(response) 
+           try {
+                response = JSON.parse(response); 
+           } catch {
+                document.getElementById('message-error').innerHTML = "There was a problem logging you in. Please Try again later."; 
+           }
            if (response == "invalid") 
                document.getElementById('message-error').innerHTML = "Invalid Credentials";
-           else if (response == "error") 
-               document.getElementById('message-error').innerHTML = "There was a problem logging you in. Please Try again later."; 
-           else {
+           else if (response.authToken != null) {
                localStorage.authToken = response.authToken;
                localStorage.email = email; 
                var url = new URL(window.location.href);
@@ -28,8 +31,9 @@ function login(e) {
                     window.location.href = redirectPage; 
                 else
                     window.location.href = "index.html"; 
-
-           }
+           } 
+           else 
+                 document.getElementById('message-error').innerHTML = "There was a problem logging you in. Please Try again later."; 
        }, 
        error: function (error) {}
    })
