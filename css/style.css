@@ -378,7 +378,7 @@ body{
     
 }
 
-.allproduct_section{ width: 100%; float: left; padding-bottom: 0px; }
+.collection_section{ width: 100%; float: left; padding-bottom: 0px; }
 .new_text{
 	width: 100%;
 	float: left;
@@ -396,7 +396,7 @@ body{
     padding-bottom: 30px;
 }
 
-.allproduct_section_2{
+.collection_section_2{
 	width: 100%;
 	float: left;
 }
@@ -429,32 +429,20 @@ body{
 
 .shoes-img img {
 	width: 80%;
-}
-.rice_one{
 	float: left;
 	padding-top: 40px;
 	padding-bottom: 40px;
 	margin-left: 11px;
 }
 
-.rice_text {
-    width: 30%;
+.sport_text {
+    width: 24%;
     text-align: center;
     padding-top: 30px;
     font-size: 16pt;
     color: #0c0116;
     border-bottom: 1px solid#000;
     margin: 0 auto;
-}
-.wheat_text {
-    width: 30%;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 16pt;
-    color: #0c0116;
-    border-bottom: 1px solid#000;
-    margin: 0 auto;
-	
 }
 .dolar_text{
 	width: 100%;
@@ -465,15 +453,13 @@ body{
 }
 .star_icon{ width: 25%; margin: 0 auto; text-align: center; }
 .star_icon ul{ margin: 0px; padding: 0px;} 
-.star_icon li{ float:left; padding-right:10px; padding-bottom: 45px;}
+.star_icon li{ float:left; padding-right:10px; padding-bottom: 25px;}
 
 .about-img2{
 	width: 100%;
 	float: left;
 	background-color: #f0ecec;
 	height: auto;
-	background-image: url(../images/about-img2.png);
-	height: 85%;
 	box-shadow: 0px 0px 10px 0px;
 	margin-left: -50px;
     margin-top: 74px;
@@ -493,9 +479,9 @@ body{
     height: 400px;
 }
 
-.wheat_one{
+.shoes-img2{
 	width: 100%;
-	float: center;
+	float: left;
 	text-align: center;
 	padding-top: 100px;
 	padding-bottom: 40px;
@@ -509,7 +495,7 @@ body{
 	margin: auto;
 }
 
-.explore_bt{
+.seemore_bt{
 	width: 32%;
 	height: 50px;
 	color: #ffffff;
@@ -543,7 +529,7 @@ body{
     height: 500px;
 }
 
-.collection_text, .allproduct_text{ 
+.collection_text{ 
     width: 100%; 
     float: left; 
     color: #ffffff; 
@@ -596,7 +582,7 @@ body{
 
 }
 
-.best_rice {
+.best_shoes {
     width: 100%;
     float: left;
     background-color: #ffffff;
@@ -626,9 +612,9 @@ body{
 	text-align: center;
     margin-left: 0px;
 }
-.rice_icon{
+.shoes_icon{
 	width: 100%;
-	float: right;
+	float: left;
 	text-align: center;
 	height: 220px;
 }
@@ -637,20 +623,20 @@ body{
     padding: 10px;
 }
 
-.star_new{
+.star_text{
 	width: 100%;
 	float: left;
 }
 .left_part {
     width: 60%;
     float: left;
-    padding-left: 0;
-    padding-top: 1px;
+    padding-left: 15px;
+    padding-top: 15px;
 }
 .left_part ul{ margin: 0px; padding: 0px; }
 .left_part li{ float: left; padding-left: 10px; }
 .right_part{ width: 40%; float: left; }
-.rice_price{ 
+.shoes_price{ 
 	width: 100%; 
 	float: left; 
 	font-size: 22pt; 
@@ -886,123 +872,3 @@ a:hover {
     height: auto;
     background: #0c0116;
 }
-
-/*--------------------------------------------------------------------- css for explore page ---------------------------------------------------------------------*/
-*{
-    font-family: 'Comfortaa', cursive;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-
-}
-
-.container > h1{
-    padding: 20px 0;
-
-}
-
-.cart{
-   display: flex;
-}
-
-.products{
-   flex: 0.75;
-}
-
-.product{
-    display: flex;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border: 1px solid silver;
-    margin-bottom: 20px;
-}
-
-
-.product > img{
-    width: 300px;
-	height: 200px;
-    object-fit: cover;
-}
-
-.product > img:hover{
-    transform: scale(1.04);
-}
-
-.product-info{
-    padding: 20px;
-    width: 100%;
-    position: relative;
-}
-
-.product-name, .product-price{
-    margin-bottom: 10px;
-
-}
-
-.product-add{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 25px;
-    background-color: green;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-
-}
-
-.product-add:hover{
-    background-color: white;
-    color: green;
-    font-weight: 600;
-    border: 1px solid green;
-}
-.btn{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 25px;
-    background-color: green;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-	height:50px;
-
-}
-
-.btn:hover{
-    background-color: white;
-    color: green;
-    font-weight: 600;
-    border: 1px solid green;
-}
-.btnn{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: 	#8B008B;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-	margin-bottom: 10%;
-	height:50px;
-
-}
-
-
-
-
-
-
-
-
-
-
-
