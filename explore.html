@@ -86,8 +86,8 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name">Short grain Rice</h3>
-                    <h4 class="product-price">₹ 60</h4>
+					<h3 class="product-name 1">Short grain Rice</h3>
+                    <h4 class="product-price 1">₹ 60</h4>
 					<div class="star_new">
     						<div class="left_part">
     							<ul>
@@ -101,14 +101,14 @@
     						
     					</div>
 					<div >
-    			<button class="btnn">Add to cart</button>
+    			<button class="btnn addToCart" id="1">Add to cart</button>
     		</div>
-					<div >
+			<div>
     			<button class="btn">Buy Now</button>
     		</div>
 
-					
-</div>
+							
+		</div>
 
 			</div>
 
@@ -118,9 +118,9 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name">Basmathi Rice</h3>
+					<h3 class="product-name 2">Basmathi Rice</h3>
 
-					<h4 class="product-price">₹ 400</h4>
+					<h4 class="product-price 2">₹ 400</h4>
 					<div >
 					<div class="star_new">
     						<div class="left_part">
@@ -134,7 +134,7 @@
     						</div>
     						
     					</div>
-    			<button class="btnn">Add to cart</button>
+    			<button class="btnn addToCart" id="2">Add to cart</button>
     		</div>
 					<div >
     			<button class="btn">Buy Now</button>
@@ -154,9 +154,9 @@
 
 				<div class="product-info">
 
-					<h3 class="product-name">Brown rice</h3>
+					<h3 class="product-name 3">Brown rice</h3>
 
-					<h4 class="product-price">₹ 100</h4>
+					<h4 class="product-price 3">₹ 100</h4>
 					<div class="star_new">
     						<div class="left_part">
     							<ul>
@@ -170,7 +170,7 @@
     						
     					</div>
 			<div >
-    			<button class="btnn">Add to cart</button>
+    			<button class="btnn addToCart" id="3">Add to cart</button>
     		</div>
 			
     		<div >
@@ -276,7 +276,29 @@
       <!-- javascript --> 
       <script src="js/owl.carousel.js"></script> 
       <script src="js\pages\auth-status.js"></script>
+      <script src="js\pages\cart.js"></script>
 
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-   </body>
+   </body> 
+   <script>
+	   $(document).ready(() => {
+		   document.querySelectorAll('.addToCart').forEach(item => {
+			   item.addEventListener('click', () => {
+				   var productId = this.id; 
+				   var productName = ""; 
+				   var price = "";
+				   document.querySelectorAll('.'+productId).forEach(ele => {
+					   productName = ele.innerHTML.trim();
+					   price = ele.innerHTML.replace('₹','').trim();
+				   }) 
+				   var productDetails = {
+         				productId: productId,
+            			productName: productName,
+             			price: price
+				   };
+				   addToCart(productDetails);
+			   })
+		   })
+	   })
+   </script>
 </html>

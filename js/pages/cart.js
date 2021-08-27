@@ -108,10 +108,9 @@ function addToCart(productDetails) {
             }
             else if (response == "success")  {
                 console.log("Success"); 
-                return true;
+                window.location.href = "cart.html";
             } else  {
                 console.log("failed");
-                return false;
             }
         }, 
         error: function (error) {} 
