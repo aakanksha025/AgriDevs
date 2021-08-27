@@ -166,6 +166,16 @@ img {
      padding-bottom: 0 !important;
 }
 
+.input-group{
+    margin: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+input{
+    padding: 5px;
+}
+
 .btn-custom {
      margin-top: 20px;
      background-color: transparent !important;
