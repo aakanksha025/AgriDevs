@@ -147,6 +147,10 @@ a,
      transition: all .3s ease-in-out;
 }
 
+.navbar-nav a{
+    font-size: 12px;
+}
+
 .logo img{
     width: 100px;
     height: 100px;
@@ -164,6 +168,30 @@ img {
 
 .paddind_bottom_0 {
      padding-bottom: 0 !important;
+}
+
+.input-group{
+    margin: auto;
+    padding: 5px;
+    width: 100%;
+    display: block;
+}
+
+input{
+    padding: 5px;
+    border: none;
+}
+
+.divide{
+    display: inline-flex;
+}
+
+.divide img{
+    margin-right: 50px;
+    display: flex;
+    height: 300px;
+    width: 250px;
+
 }
 
 .btn-custom {
